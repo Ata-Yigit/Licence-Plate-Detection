@@ -1,7 +1,7 @@
 import cv2 as cv
 import easyocr
 
-img = cv.imread("C:/Users/user/Downloads/plaka4.jpg")
+img = cv.imread("C:/Users/user/Downloads/plaka3.jpg")
 img = cv.resize(img,(1600,900))
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 filtered = cv.bilateralFilter(gray,20,60,20)
@@ -11,6 +11,9 @@ for cnt in contours:
     approx = cv.approxPolyDP(cnt,20, True)
     if len(approx) == 4 and cv.contourArea(cnt)>3000:
         img = cv.drawContours(img, [approx], -1, (0,255,0), 3)
+reader = easyocr.Reader(['en'])
+result = reader.readtext(img)
+print(result)
 cv.imshow("Plate",img)
 cv.waitKey(0)
 cv.destroyAllWindows()
