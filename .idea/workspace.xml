@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b575cf2-b49d-41f8-8d1b-9adb6e23f37f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="1b575cf2-b49d-41f8-8d1b-9adb6e23f37f" name="Changes" comment="Latest commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/founder.py" beforeDir="false" afterPath="$PROJECT_DIR$/founder.py" afterDir="false" />
     </list>
@@ -71,6 +68,29 @@
       <option name="presentableId" value="Default" />
       <updated>1689692504564</updated>
     </task>
+    <task id="LOCAL-00001" summary="Latest commit">
+      <created>1689715697031</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689715697031</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Latest commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Latest commit" />
   </component>
 </project>
