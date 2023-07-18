@@ -1,4 +1,5 @@
 import cv2 as cv
+import easyocr
 
 img = cv.imread("C:/Users/user/Downloads/plaka4.jpg")
 img = cv.resize(img,(1600,900))
