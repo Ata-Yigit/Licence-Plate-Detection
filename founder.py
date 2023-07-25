@@ -2,32 +2,24 @@ import cv2 as cv
 import numpy as np
 import easyocr
 
-img = cv.imread("C:/Users/user/Downloads/plaka5.jpeg")
-img = cv.resize(img,(1200,1200))
-gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-filtered = cv.bilateralFilter(gray,5,60,20)
-edges = cv.Canny(filtered,60,200)
-contours,_ = cv.findContours(edges.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
-mask = np.zeros(gray.shape, np.uint8)
-for cnt in contours:
-    approx = cv.approxPolyDP(cnt,20, True)
-    if len(approx) == 4 and cv.contourArea(cnt)>3000:
-        new_img = cv.drawContours(mask, [approx],0,255, -1)
-        new_img = cv.bitwise_and(gray, gray,mask=mask)
-
-(x,y) = np.where(mask==255)
-(x1,y1) = (np.min(x),np.min(y))
-(x2,y2) = (np.max(x),np.max(y))
-new_img = new_img[x1:x2,y1:y2]
-new_img = cv.resize(new_img,(new_img.shape[1]*2,new_img.shape[0]*2))
-
+img = cv.imread("C:/Users/user/Downloads/plakaa.jpg")
+img = cv.resize(img,(img.shape[1]*2,img.shape[0]*2))
+gray = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+cascade = cv.CascadeClassifier('C:/Users/user/Downloads/haarcascade_russian_plate_number.xml')
+plates = cascade.detectMultiScale(gray, 1.2, 5)
+print('Number of detected license plates:', len(plates))
+for (x, y, w, h) in plates:
+    new_img = img[y:y+h,x:x+w]
+    new_img = cv.resize(new_img,(new_img.shape[1]*4,new_img.shape[0]*4))
+gray = cv.cvtColor(new_img , cv.COLOR_BGR2GRAY)
+thresh = cv.adaptiveThreshold(gray,255,cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY,11,2)
 reader = easyocr.Reader(['en'])
-result = reader.readtext(new_img)
+result = reader.readtext(thresh)
 plate = ""
 for r in result:
     plate += r[1]
     plate +=" "
 print(plate)
-cv.imshow("Plate",new_img)
+cv.imshow("Plate",thresh)
 cv.waitKey(0)
 cv.destroyAllWindows()
